@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funngro -  Freelancing Platform for Students</title>
+    <meta name="description" content="funngro connects students with companies for  freelancing opportunities. Build your future in an immersive  environment.">
+    <meta name="keywords" content=" freelancing, student freelancers, immersive learning,  projects, freelance platform">
+    <link rel="canonical" href="https://www.funngro.com/">
+    <meta property="og:title" content="funngro -  Freelancing Platform for Students">
+    <meta property="og:description" content="Connect with companies, gain experience, and build your future in an immersive  environment.">
+    <meta property="og:image" content="https://www.funngro.com/images/og-image.jpg">
+    <meta property="og:url" content="https://www.funngro.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #07AB67;
+            --secondary-color: #121E2C;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            perspective: 1000px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transform-style: preserve-3d;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        main {
+            padding-top: 80px;
+            transform-style: preserve-3d;
+        }
+
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .features, .projects, .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            transform-style: preserve-3d;
+        }
+
+        .feature, .project, .testimonial {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .feature:hover, .project:hover, .testimonial:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 50px 0 20px;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(45deg, #1a1a1a 25%, #2a2a2a 25%, #2a2a2a 50%, #1a1a1a 50%, #1a1a1a 75%, #2a2a2a 75%);
+            background-size: 40px 40px;
+            transform: skewY(-2deg);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-bottom: 30px;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            transform: perspective(1000px) rotateX(5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+        }
+
+        .footer-section h3 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-section p, .footer-section ul {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-section a:hover {
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+            transform: translateZ(0);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon:hover {
+            background-color: #555;
+            transform: translateY(-5px) rotateY(10deg);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            position: relative;
+        }
+
+        .footer-bottom::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-bottom: 30px;
+                transform: none;
+            }
+
+            .footer-section:hover {
+                transform: translateY(-5px);
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features, .projects, .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel {
+                max-width: 100%;
+            }
+
+            .carousel-control {
+                font-size: 1.5rem;
+                padding: 10px;
+            }
+        }
+
+        /* 3D elements */
+        .floating-element {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .cube {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(29, 191, 115, 0.3);
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+        }
+
+        .cube::before, .cube::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(29, 191, 115, 0.3);
+            transform-origin: center;
+        }
+
+        .cube::before {
+            transform: rotateY(90deg);
+        }
+
+        .cube::after {
+            transform: rotateX(90deg);
+        }
+
+        .sphere {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(29, 191, 115, 0.3));
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .pyramid {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86.6px solid rgba(29, 191, 115, 0.3);
+            animation: spin 15s infinite linear;
+        }
+
+        .ring {
+            width: 120px;
+            height: 120px;
+            border: 15px solid rgba(29, 191, 115, 0.3);
+            border-radius: 50%;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes rotate {
+            from { transform: rotateX(0) rotateY(0) rotateZ(0); }
+            to { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        @keyframes spin {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation: carouselAutoplay 15s infinite;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item:hover {
+            transform: scale(1.05) translateZ(20px);
+        }
+
+        .carousel-item .shape {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .carousel-control:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-control.prev {
+            left: 20px;
+        }
+
+        .carousel-control.next {
+            right: 20px;
+        }
+
+        @keyframes carouselAutoplay {
+            0%, 33% { transform: translateX(0); }
+            33.01%, 66% { transform: translateX(-100%); }
+            66.01%, 100% { transform: translateX(-200%); }
+        }
+
+        .carousel::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #1dbf73, #3498db);
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.7;
+            border-radius: 20px;
+        }
+
+        /* 3D Tilt Effect */
+        .professional-ripple {
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .professional-ripple::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            right: -100%;
+            bottom: -100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+            transform: scale(0);
+            pointer-events: none;
+        }
+
+        .professional-ripple:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .professional-ripple:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .professional-ripple-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .professional-ripple:hover .professional-ripple-content {
+            transform: scale(1.05);
+        }
+
+        /* 3D Shapes */
+        .shape {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(29, 191, 115, 0.3);
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+        }
+
+        .sphere {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(29, 191, 115, 0.3));
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .pyramid {
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 104px solid rgba(29, 191, 115, 0.3);
+            animation: spin 15s infinite linear;
+        }
+
+        .ring {
+            width: 140px;
+            height: 140px;
+            border: 20px solid rgba(29, 191, 115, 0.3);
+            border-radius: 50%;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        .hero-image {
+            max-width: 800px; /* Reduced max-width */
+            width: 90%; /* Takes up 90% of the container width */
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .full-width-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .full-width-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .hero-image {
+                width: 95%; /* Takes up more width on smaller screens */
+            }
+            .image-container {
+                padding-top: 75%; /* 4:3 Aspect Ratio for mobile */
+            }
+        }
+
+        /* Media query for very large screens */
+        @media (min-width: 1920px) {
+            .hero-image {
+                max-width: 1920px; /* Cap the maximum width */
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo" aria-label="funngro logo">Funngro</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#" class="cta-button">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container tilt">
+                <div class="tilt-inner">
+                    <h1>Empowering Students through  Freelancing</h1>
+                    <p>Connect with companies, gain experience, and build your future in an immersive  environment.</p>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+            </div>
+            <div class="shape cube" style="top: 10%; left: 5%;"></div>
+            <div class="shape sphere" style="top: 60%; right: 10%;"></div>
+        </section>
+
+        <section class="hero-image">
+            <div class="image-container">
+                <img src="hero.png" alt="Funngro Hero Image" class="full-width-image">
+            </div>
+        </section>
+
+        <section id="features" class="features container">
+            <h2>Key Features</h2>
+            <div class="feature tilt">
+                <div class="tilt-inner">
+                    <div class="shape cube"></div>
+                    <h3>For Students</h3>
+                    <p>Discover  freelance opportunities, build your immersive portfolio, and earn while you learn in a cutting-edge environment.</p>
+                </div>
+            </div>
+            <div class="feature tilt">
+                <div class="tilt-inner">
+                    <div class="shape sphere"></div>
+                    <h2>For Companies</h2>
+                    <p>Post  projects and connect with talented, tech-savvy student freelancers in our immersive platform.</p>
+                </div>
+            </div>
+            <div class="feature tilt">
+                <div class="tilt-inner">
+                    <div class="shape pyramid"></div>
+                    <h2>For Parents</h2>
+                    <p>Experience the benefits of  freelancing for your child's future career prospects in our interactive environment.</p>
+                </div>
+            </div>
+            <div class="shape pyramid" style="bottom: 10%; left: 15%;"></div>
+        </section>
+        <section id="testimonials" class="testimonials">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial">
+                <p>"Funngro helped me land my first freelance job!" - Student</p>
+            </div>
+            <div class="testimonial">
+                <p>"I found talented students for my projects quickly." - Company</p>
+            </div>
+            <div class="testimonial">
+                <p>"As a parent, I appreciate the opportunities funngro provides." - Parent</p>
+            </div>
+            <div class="shape ring" style="top: 20%; right: 5%;"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>funngro</h3>
+                    <p>Empowering students through  freelancing opportunities.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Innovation St, Tech City</p>
+                    <p><i class="fas fa-envelope"></i> info@funngro.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 funngro. All rights reserved.</p>
+            </div>
+        </div>
+        <div class="footer--elements">
+            <div class="floating-cube"></div>
+            <div class="floating-sphere"></div>
+            <div class="floating-pyramid"></div>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "funngro",
+      "url": "https://www.funngro.com",
+      "logo": "https://www.funngro.com/images/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/funngro",
+        "https://www.twitter.com/funngro",
+        "https://www.instagram.com/funngro",
+        "https://www.linkedin.com/company/funngro"
+      ]
+    }
+    </script>
+</body>
+</html>
